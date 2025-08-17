@@ -1,0 +1,25 @@
+These are instructions to design Terraform at with better quality. Please follow the Do's and Don'ts below. 
+
+
+## Dont's
+
+- Don't use modules unless prompted.
+- Never try to make the terraform provider in a for loop
+- Use Lists for variables unless you have to. Try to ALWAYS default to maps
+- Don't use COUNT for a loop unless it's a simple enable/disable such as:
+
+```
+    count = var.enable_vpc ? 1 : 0
+```
+
+## Do's
+
+- All Naming files should be <resource_type>.tf to make it clearer to read and maintain
+- Alway use `for_each` loops, never use `count` in the resource unless it's a feature flag to enable or disable
+- Always put the common variables between each environment in a `common.auto.tfvars` file. The variables will be consistently used in all environment
+- Always set the environment specific variable files as `<env>.tfvars`
+- Always set the region specific variable files as `<region>.tfvars`
+- Always put the variable declarations inside of a `variables.tf` 
+- Always have a `backend.tf` for the remote backend
+- Always have a `provider.tf` for the provider
+- If AWS always add an assume role into the `provider.tf` 
