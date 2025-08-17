@@ -23,3 +23,4 @@ These are instructions to design Terraform at with better quality. Please follow
 - Always have a `backend.tf` for the remote backend
 - Always have a `provider.tf` for the provider
 - If AWS always add an assume role into the `provider.tf` 
+- Always use the following variables for a good naming convention, start resources name with these 3 joint - `var.org` `var.app` `var.env`
